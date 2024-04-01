@@ -7,7 +7,7 @@ library(janitor)
 library(effectsize)
 
 #load csv files 
-setwd("D:/backup 12.01/viola/OneDrive/Documents/PCPT Master/Masterthesis")
+setwd("") #insert working directory
 df_neurotic <- read.csv("neurotic_offensive_analysis.csv")
 df_neuroticism <- read.csv("neuroticism_offensive_analysis.csv")
 
