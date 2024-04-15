@@ -1,5 +1,3 @@
-install.packages('effectsize')
-install.packages('lubridate')
 library(lubridate)
 library(dplyr)
 library(gridExtra)
@@ -8,16 +6,16 @@ library(effectsize)
 
 #load csv files 
 setwd("") #insert working directory
-df_neurotic <- read.csv("neurotic_offensive_analysis.csv")
-df_neuroticism <- read.csv("neuroticism_offensive_analysis.csv")
+df_neurotic <- read.csv("2neurotic_offensive_analysis.csv")
+df_neuroticism <- read.csv("2neuroticism_offensive_analysis.csv")
 
 #check the frequency of offensive and not offensive tweets
 df_neurotic%>%tabyl(predominant_label)
 df_neuroticism%>%tabyl(predominant_label)
 
 #create for the offensive variables with the number of offensive and not offensive tweets per keyword
-neurotic <- c(402977, 194653)
-neuroticism <- c(30804, 2731)
+neurotic <- c(295403, 131624)
+neuroticism <- c(30577, 2705)
 
 #combine them in a matrix 
 offensive_data <- matrix(c(neurotic, neuroticism), nrow=2, byrow=TRUE)
@@ -123,7 +121,7 @@ df_neuroticism_year_2018%>%tabyl(predominant_label)
 
 #create for the offensive variables with the number of offensive and not offensive tweets per keyword
 neurotic_2018 <- c(37746, 17721)
-neuroticism_2018 <- c(4215, 4215)
+neuroticism_2018 <- c(4215, 368)
 
 #combine them in a matrix 
 offensive_data_2018 <- matrix(c(neurotic_2018, neuroticism_2018), nrow=2, byrow=TRUE)
@@ -200,8 +198,8 @@ df_neurotic_year_2021%>%tabyl(predominant_label)
 df_neuroticism_year_2021%>%tabyl(predominant_label)
 
 #create for the offensive variables with the number of offensive and not offensive tweets per keyword
-neurotic_2021 <- c(53480, 28630)
-neuroticism_2021 <- c(5177, 592)
+neurotic_2021 <- c(35167, 18399)
+neuroticism_2021 <- c(4974, 568)
 
 #combine them in a matrix 
 offensive_data_2021 <- matrix(c(neurotic_2021, neuroticism_2021), nrow=2, byrow=TRUE)
@@ -210,55 +208,3 @@ offensive_data_2021 <- matrix(c(neurotic_2021, neuroticism_2021), nrow=2, byrow=
 chisq.test(x = offensive_data_2021)
 cramers_v(x = offensive_data_2021)
 
-
-#In year 2022
-year_2022 <- 2022 
-
-# Filtering for df_neurotic
-df_neurotic_year_2022 <- df_neurotic %>% 
-  filter(year(date) == year_2022)
-
-# Filtering for df_neuroticism
-df_neuroticism_year_2022 <- df_neuroticism %>%
-  filter(year(date) == year_2022)
-
-#check the frequency of offensive and not offensive tweets
-df_neurotic_year_2022%>%tabyl(predominant_label)
-df_neuroticism_year_2022%>%tabyl(predominant_label)
-
-#create for the offensive variables with the number of offensive and not offensive tweets per keyword
-neurotic_2022 <- c(67986, 40962)
-neuroticism_2022 <- c(20, 2)
-
-#combine them in a matrix 
-offensive_data_2022 <- matrix(c(neurotic_2022, neuroticism_2022), nrow=2, byrow=TRUE)
-
-#test chi-square and cramers v
-chisq.test(x = offensive_data_2022)
-cramers_v(x = offensive_data_2022)
-
-#In year 2023
-year_2023 <- 2023
-
-# Filtering for df_neurotic
-df_neurotic_year_2023 <- df_neurotic %>% 
-  filter(year(date) == year_2023)
-
-# Filtering for df_neuroticism
-df_neuroticism_year_2023 <- df_neuroticism %>%
-  filter(year(date) == year_2023)
-
-#check the frequency of offensive and not offensive tweets
-df_neurotic_year_2023%>%tabyl(predominant_label)
-df_neuroticism_year_2023%>%tabyl(predominant_label)
-
-#create for the offensive variables with the number of offensive and not offensive tweets per keyword
-neurotic_2023 <- c(21275, 11836)
-neuroticism_2023 <- c(4, 0)
-
-#combine them in a matrix 
-offensive_data_2023 <- matrix(c(neurotic_2023, neuroticism_2023), nrow=2, byrow=TRUE)
-
-#test chi-square and cramers v
-chisq.test(x = offensive_data_2023)
-cramers_v(x = offensive_data_2023)
